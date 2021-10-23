@@ -14,8 +14,6 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
         });
     }
 
-    //Bearer 81347fb81347bc1981349fn19
-
     const [ , token] = authToken.split(" ");
 
     try {
