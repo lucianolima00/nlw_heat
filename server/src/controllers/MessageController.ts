@@ -2,21 +2,23 @@ import { Request, Response } from "express";
 import {MessageService} from "../services/MessageService";
 
 class MessageController {
-    service = new MessageService();
 
     async view(request: Request, response: Response) {
+        const service = new MessageService();
 
-        const messages = await this.service.view();
+        const messages = await service.view();
 
         return response.json(messages);
     }
 
     async create(request: Request, response: Response) {
+        const service = new MessageService();
+
         const { message } = request.body
 
         const { user_id } = request;
 
-        const result = await this.service.create(message, user_id)
+        const result = await service.create(message, user_id)
 
         return response.json(result)
     }

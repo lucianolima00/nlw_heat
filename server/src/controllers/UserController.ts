@@ -2,12 +2,13 @@ import { Request, Response } from "express";
 import {UserService} from "../services/UserService";
 
 class UserController {
-    service = new UserService();
 
     async authenticate(request: Request, response: Response) {
+        const service = new UserService();
+
         const { code } = request.body
         try {
-            const result = await this.service.authenticate(code)
+            const result = await service.authenticate(code)
 
             return response.json(result);
         } catch (err) {
@@ -15,10 +16,12 @@ class UserController {
         }
     }
     async view(request: Request, response: Response) {
+        const service = new UserService();
+
         const { user_id } = request;
 
 
-        const result = await this.service.view(user_id)
+        const result = await service.view(user_id)
 
         return response.json(result);
     }
