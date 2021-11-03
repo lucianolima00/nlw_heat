@@ -1,5 +1,7 @@
 # CHANGES
 
+###[0.0.5] - Move backend to server directory ([@luciano.lima00](https://github.com/lucianolima00))
+
 ###[0.0.4] - Refactoring services ([@luciano.lima00](https://github.com/lucianolima00))
 
 ###[0.0.3] - User Profile ([@luciano.lima00](https://github.com/lucianolima00))
