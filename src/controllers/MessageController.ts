@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import {CreateMessageService} from "../services/CreateMessageService";
-import {GetLast3MessagesService} from "../services/GetLast3MessagesService";
+import {MessageService} from "../services/MessageService";
 
 class MessageController {
-    async view(request: Request, response: Response) {
-        const service = new GetLast3MessagesService();
+    service = new MessageService();
 
-        const messages = await service.execute();
+    async view(request: Request, response: Response) {
+
+        const messages = await this.service.view();
 
         return response.json(messages);
     }
@@ -16,9 +16,7 @@ class MessageController {
 
         const { user_id } = request;
 
-        const service = new CreateMessageService();
-
-        const result = await service.execute(message, user_id)
+        const result = await this.service.create(message, user_id)
 
         return response.json(result)
     }

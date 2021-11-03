@@ -1,8 +1,20 @@
 import prismaClient from "../prisma";
 import { io } from "../app";
 
-class CreateMessageService {
-    async execute(text: string, user_id: string){
+class MessageService {
+    async view(){
+        return await prismaClient.message.findMany({
+            take: 3,
+            orderBy: {
+                created_at: 'desc'
+            },
+            include: {
+                user: true
+            }
+        });
+    }
+
+    async create(text: string, user_id: string){
         const message = await prismaClient.message.create({
             data: {
                 text,
@@ -29,4 +41,4 @@ class CreateMessageService {
     }
 }
 
-export { CreateMessageService }
+export { MessageService }

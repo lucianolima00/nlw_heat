@@ -1,14 +1,13 @@
 import { Request, Response } from "express";
-import {AuthenticateUserService} from "../services/AuthenticateUserService";
-import {GetUserService} from "../services/GetUserService";
+import {UserService} from "../services/UserService";
 
 class UserController {
+    service = new UserService();
+
     async authenticate(request: Request, response: Response) {
         const { code } = request.body
-
-        const service = new AuthenticateUserService();
         try {
-            const result = await service.execute(code)
+            const result = await this.service.authenticate(code)
 
             return response.json(result);
         } catch (err) {
@@ -18,9 +17,8 @@ class UserController {
     async view(request: Request, response: Response) {
         const { user_id } = request;
 
-        const service = new GetUserService();
 
-        const result = await service.execute(user_id)
+        const result = await this.service.view(user_id)
 
         return response.json(result);
     }
