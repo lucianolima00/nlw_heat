@@ -1,5 +1,7 @@
 # CHANGES
 
+###[0.0.7] - Frontend finished using ReactJS ([@luciano.lima00](https://github.com/lucianolima00))
+
 ###[0.0.6] - Frontend of List messages and Signin with Github ([@luciano.lima00](https://github.com/lucianolima00))
 
 ###[0.0.5] - Create web react using vite ([@luciano.lima00](https://github.com/lucianolima00))
